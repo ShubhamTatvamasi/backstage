@@ -1,0 +1,22 @@
+# Backstage override configuration for your local development environment
+app:
+  listen:
+    host: 0.0.0.0
+
+auth:
+  environment: development
+  providers:
+    github:
+      development:
+        clientId: ${AUTH_GITHUB_CLIENT_ID}
+        clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
+        signIn:
+          resolvers:
+            - resolver: usernameMatchingUserEntityName
+
+catalog:
+  rules:
+    - allow: [User, Component, System, API, Resource, Location]
+  locations:
+    - type: file
+      target: ../../catalog/entities/users.yaml

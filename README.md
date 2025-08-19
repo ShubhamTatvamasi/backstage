@@ -27,3 +27,10 @@ In the backend directory, add the GitHub auth provider:
 ```bash
 yarn --cwd packages/backend add @backstage/plugin-auth-backend-module-github-provider
 ```
+
+---
+
+Reference:
+
+https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme/team-a-group.yaml
+

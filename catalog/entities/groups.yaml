@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: development
+  description: Development Team
+spec:
+  type: team
+  profile:
+    email: development@example.com
+    picture: https://static.vecteezy.com/system/resources/previews/014/526/613/non_2x/personal-growth-self-improvement-and-self-development-concept-man-watering-that-growing-plant-from-the-brain-as-metaphor-growth-personality-flat-illustration-vector.jpg
+  parent: backstage
+  children: []

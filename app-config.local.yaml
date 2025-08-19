@@ -16,7 +16,11 @@ auth:
 
 catalog:
   rules:
-    - allow: [User, Component, System, API, Resource, Location]
+    - allow: [User, Group]
   locations:
-    - type: file
+    - name: Users
+      type: file
       target: ../../catalog/entities/users.yaml
+    - name: Groups
+      type: file
+      target: ../../catalog/entities/groups.yaml

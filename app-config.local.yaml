@@ -28,3 +28,10 @@ catalog:
       target: ../../catalog/entities/groups.yaml
       rules:
         - allow: [Group]
+
+techdocs:
+  builder: 'local'
+  generator:
+    runIn: 'local'
+  publisher:
+    type: 'local'

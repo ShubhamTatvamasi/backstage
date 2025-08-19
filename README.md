@@ -34,3 +34,7 @@ Reference:
 
 https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme/team-a-group.yaml
 
+Install mkdocs:
+```bash
+pipx install mkdocs-techdocs-core --include-deps --force
+```

@@ -28,6 +28,11 @@ catalog:
       target: ../../catalog/entities/groups.yaml
       rules:
         - allow: [Group]
+    - name: URL
+      type: url
+      target: https://github.com/ShubhamTatvamasi/backstage-software-templates/blob/main/python-app/template.yaml
+      rules:
+        - allow: [Template]
 
 techdocs:
   builder: 'local'
@@ -35,3 +40,8 @@ techdocs:
     runIn: 'local'
   publisher:
     type: 'local'
+
+integrations:
+  github:
+    - host: github.com
+      token: ${GITHUB_TOKEN}

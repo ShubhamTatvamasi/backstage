@@ -38,3 +38,24 @@ Install mkdocs:
 ```bash
 pipx install mkdocs-techdocs-core --include-deps --force
 ```
+
+
+---
+
+### Kubernetes
+
+Add bitnami helm repo:
+```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
+```
+
+Install postgresql:
+```bash
+helm upgrade -i postgresql bitnami/postgresql \
+  --set global.postgresql.auth.postgresPassword=backstage \
+  --set global.postgresql.auth.username=backstage \
+  --set global.postgresql.auth.password=backstage \
+  --set global.postgresql.auth.database=backstage \
+  --namespace backstage \
+  --create-namespace
+```

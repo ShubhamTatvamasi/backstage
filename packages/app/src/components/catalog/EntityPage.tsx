@@ -154,7 +154,7 @@ const serviceEntityPage = (
       {overviewContent}
     </EntityLayout.Route>
 
-    <EntityLayout.Route path="/ci-cd" title="CI/CD">
+    <EntityLayout.Route path="/ci-cd" title="CI/CD" if={isGithubActionsAvailable}>
       <EntityGithubActionsContent />
     </EntityLayout.Route>
 

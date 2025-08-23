@@ -1,0 +1,40 @@
+services:
+  backstage:
+    image: shubhamtatvamasi/backstage:master
+    container_name: backstage
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    ports:
+      - "7007:7007"
+    environment:
+      NODE_ENV: production
+      # Postgres connection for Backstage
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: backstage
+      POSTGRES_PASSWORD: backstage
+      POSTGRES_DB: backstage
+      # GitHub authentication
+      AUTH_GITHUB_CLIENT_ID: ${AUTH_GITHUB_CLIENT_ID}
+      AUTH_GITHUB_CLIENT_SECRET: ${AUTH_GITHUB_CLIENT_SECRET}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+    volumes:
+      # Mount your Backstage app config (must exist locally)
+      - ./app-config.local.yaml:/app/app-config.production.yaml
+
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: backstage
+      POSTGRES_PASSWORD: backstage
+      POSTGRES_DB: backstage
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

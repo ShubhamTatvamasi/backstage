@@ -59,3 +59,8 @@ helm upgrade -i postgresql bitnami/postgresql \
   --namespace backstage \
   --create-namespace
 ```
+
+Apply the Kubernetes manifests:
+```bash
+kubectl apply -f charts/backstage-k8s.yaml
+```

@@ -19,6 +19,9 @@ services:
       AUTH_GITHUB_CLIENT_ID: ${AUTH_GITHUB_CLIENT_ID}
       AUTH_GITHUB_CLIENT_SECRET: ${AUTH_GITHUB_CLIENT_SECRET}
       GITHUB_TOKEN: ${GITHUB_TOKEN}
+      # Backstage app configuration
+      APP_CONFIG_app_baseUrl: http://localhost:7007
+      APP_CONFIG_backend_baseUrl: http://localhost:7007
     # volumes:
       # Mount your Backstage app config (must exist locally)
       # - ./app-config.local.yaml:/app/app-config.production.yaml

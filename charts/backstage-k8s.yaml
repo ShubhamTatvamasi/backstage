@@ -22,9 +22,9 @@ spec:
         - containerPort: 7007
         env:
           - name: APP_CONFIG_app_baseUrl
-            value: https://backstage.test.com
+            value: https://backstage.aws.shubhamtatvamasi.com
           - name: APP_CONFIG_backend_baseUrl
-            value: https://backstage.test.com
+            value: https://backstage.aws.shubhamtatvamasi.com
           - name: POSTGRES_HOST
             value: postgresql
           - name: POSTGRES_USER
@@ -57,9 +57,15 @@ kind: Ingress
 metadata:
   name: backstage
   namespace: backstage
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
+  tls:
+  - hosts:
+      - backstage.aws.shubhamtatvamasi.com
+    secretName: backstage-tls
   rules:
-  - host: "backstage.test.com"
+  - host: "backstage.aws.shubhamtatvamasi.com"
     http:
         paths:
         - path: /

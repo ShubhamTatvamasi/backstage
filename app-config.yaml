@@ -118,7 +118,7 @@ kubernetes:
           name: k8s-cluster
           authProvider: serviceAccount
           skipTLSVerify: true
-          skipMetricsLookup: true
+          # skipMetricsLookup: true
           serviceAccountToken: ${K8S_TOKEN}
 
 # see https://backstage.io/docs/permissions/getting-started for more on the permission framework

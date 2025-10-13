@@ -104,8 +104,22 @@ catalog:
     #   rules:
     #     - allow: [User, Group]
 
+# see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
 kubernetes:
-  # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
+  frontend:
+    podDelete:
+      enabled: true
+  serviceLocatorMethod:
+    type: multiTenant
+  clusterLocatorMethods:
+    - type: config
+      clusters:
+        - url: https://kubernetes.default.svc
+          name: k8s-cluster
+          authProvider: serviceAccount
+          skipTLSVerify: true
+          skipMetricsLookup: true
+          serviceAccountToken: ${K8S_TOKEN}
 
 # see https://backstage.io/docs/permissions/getting-started for more on the permission framework
 permission:

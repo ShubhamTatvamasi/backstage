@@ -64,3 +64,47 @@ Apply the Kubernetes manifests:
 ```bash
 kubectl apply -f charts/backstage-k8s.yaml
 ```
+
+### Service Account
+
+Create a service account with cluster-admin role:
+```bash
+kubectl -n backstage create serviceaccount backstage-sa
+```
+
+Create a secret for the service account:
+```yaml
+kubectl apply -f - << EOF
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backstage-sa-token
+  namespace: backstage
+  annotations:
+    kubernetes.io/service-account.name: backstage-sa
+type: kubernetes.io/service-account-token
+EOF
+```
+
+Create a ClusterRoleBinding for the service account:
+```yaml
+kubectl apply -f - << EOF
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: backstage-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: backstage-sa
+    namespace: backstage
+EOF
+```
+
+Get the token for the service account:
+```bash
+kubectl -n backstage get secret backstage-sa-token -o jsonpath="{.data.token}" | base64 -d; echo
+```

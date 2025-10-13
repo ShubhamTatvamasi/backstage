@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: backstage
-        image: shubhamtatvamasi/backstage:master
+        image: shubhamtatvamasi/backstage:1.0.2
         ports:
         - containerPort: 7007
         env:
@@ -36,6 +36,8 @@ spec:
           - name: AUTH_GITHUB_CLIENT_ID
             value: some_secret_value(DO NOT PUSH SECRETS TO GITHUB)
           - name: AUTH_GITHUB_CLIENT_SECRET
+            value: some_secret_value(DO NOT PUSH SECRETS TO GITHUB)
+          - name: K8S_TOKEN
             value: some_secret_value(DO NOT PUSH SECRETS TO GITHUB)
 
 ---
